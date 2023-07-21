@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../App.css';
+import TransactionTable from './TransactionTable';
+import { useEffect,useState } from "react";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [transactions, setTransactions] = useState([]); //using the useState hook to store the transactions in the component's state.
+  // fetching the data to display using fetch API
+useEffect(
+  ()=>{
+      fetch("http://localhost:3000/transactions")
+      .then(resp=>resp.json())
+      .then(data=>{
+        console.log(data)
+          setTransactions(data.transactions)
+      })
+  },[]
+)
+
+return(
+  <TransactionTable transactions={transactions}/> //passing the data as a prop to transaction table
+)
 }
 
 export default App;
