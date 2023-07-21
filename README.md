@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Bank Transactions App
+# Author: Judy Chelangat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React application that displays a list of recent bank transactions and allows users to add new transactions and filter transactions based on their description.
 
-## Available Scripts
+# Project Overview
+The Bank Transactions App is designed to provide users with a simple interface to view and manage their recent bank transactions. It fetches transaction data from a local server running JSON DB server, which provides a convenient way to simulate a backend for development and testing.
 
-In the project directory, you can run:
+# Getting Started
+ # Prerequisites
+Before setting up the project, ensure you have the following installed: </br>
 
-### `npm start`
+Node.js (https://nodejs.org) for running the application and installing dependencies. </br>
+JSON Server (https://github.com/typicode/json-server) to serve as the backend and provide transaction data.</br>
+# Project Setup
+Clone this GitHub repository to your local machine.</br>
+Navigate to the project folder using the command line or terminal.</br>
+Install the required dependencies by running npm install.</br>
+Create a db.json file in the project directory and populate it with sample transaction data. For example:
+json
+Copy code
+{
+  "transactions": [
+    { "id": 1, "description": "Groceries", "amount": 50 },
+    { "id": 2, "description": "Gasoline", "amount": 30 },
+    { "id": 3, "description": "Restaurant", "amount": 25 }
+  ]
+}</br>
+# Starting the Application
+Start the JSON DB server by running the following command:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+json-server --watch db.json --port 8001</br>
+To launch the Bank Transactions App, run:
+npm start</br>
+The application should open in your default web browser at http://localhost:3000.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Features
+The Bank Transactions App comes with the following features:</br>
 
-### `npm test`
+Transaction Table: The main page displays a table listing all transactions, including their description and amount.</br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Add New Transaction: Users can fill out a form to add a new transaction to the table. Please note that the new transaction is not persisted to the backend but only displayed in the table temporarily.</br>
 
-### `npm run build`
+Filter Transactions: Users can filter transactions by typing into the search bar. Only transactions with descriptions matching the search term will be shown in the transactions table.</br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Contributing
+This project is not open for external contributions as it is an individual project for learning purposes. However, feedback and suggestions are welcome. </br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# contact
+email judysigilai75@gmail.com
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# License
+This project is licensed under the MIT License.
 
-### `npm run eject`
+# Acknowledgments
+Thank you to the team at Moringa School for providing the guidance and resources to complete this project.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
