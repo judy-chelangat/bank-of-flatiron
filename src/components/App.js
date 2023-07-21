@@ -2,6 +2,7 @@ import logo from '../logo.svg';
 import '../App.css';
 import TransactionTable from './TransactionTable';
 import { useEffect,useState } from "react";
+import Form from './Form';
 
 
 
@@ -22,10 +23,12 @@ useEffect(
 
 return(
   <div>
+  <Form details={transactions}/> 
   <TransactionTable transactionDetails={transactions} />
   
   </div>
 )
 }
+//passing in the previous array in the form being passed
 //passing the data as a prop to transaction table
 export default App;
