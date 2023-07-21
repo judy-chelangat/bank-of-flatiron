@@ -1,12 +1,34 @@
 import React from "react";
-import { useEffect,useState } from "react";
 
-
-function TransactionTable(){ //passing in the data as prop from parent component 
+function TransactionTable({transactionDetails}){ //passing in the data as prop from parent component and destructuring it
+console.log(transactionDetails); // Check if 'transactionsDetails' prop is received correctly 
 
 return(
-    <p>{description}</p>
-)
+    <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {transactionDetails.map((transaction) => (
+        <tr key={transaction.id}>
+          <td>{transaction.date}</td>
+          <td>{transaction.description}</td>
+          <td>{transaction.category}</td>
+          <td>{transaction.amount}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
+
+
+   
+
 }
 
 export default TransactionTable;
