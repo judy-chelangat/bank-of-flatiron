@@ -27,13 +27,23 @@ function Form({addTransaction}) {
         
     }
   return (
-    <div>
+    <div className="container mb-4">
       <form onSubmit={handleSubmit}>
-        <input onChange={ e => setCategory(e.target.value)} placeholder='category' value={category}/>
-        <input onChange={ e => setAmount(e.target.value)}  placeholder='Amount' value={amount}/>
-        <input onChange={ e => setDescription(e.target.value)} placeholder='description' value={description}/>
-        <input onChange={ e => setDate(e.target.value)} placeholder='date' value={date}/>
-        <button type="submit">Submit</button>
+      <div className=" mb-3 form-group"> 
+      <input onChange={ e => setCategory(e.target.value)} placeholder='category' value={category}/>
+      </div> 
+      <div className="mb-3 form-group">  
+      <input onChange={ e => setAmount(e.target.value)}  placeholder='Amount' value={amount}/>
+      </div> 
+      <div className="mb-3 form-group"> 
+       <input onChange={ e => setDescription(e.target.value)} placeholder='description' value={description}/>
+      </div>
+      <div className="mb-3 form-group"> 
+       <input onChange={ e => setDate(e.target.value)} placeholder='date' value={date}/>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Add Transaction
+        </button>
       </form>
     </div>
   )
