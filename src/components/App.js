@@ -33,7 +33,7 @@ return(
     <h1 className="mb-4">Bank Of Flatiron</h1>
     <div className='d-flex col '>
       <Form addTransaction={addTransaction}/>
-          <TransactionTable transactionDetails={transactions} />
+          <TransactionTable transactionDetails={transactions} setTransactionDetails={setTransactions} />
       </div>
   </div>
 )
