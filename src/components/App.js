@@ -3,6 +3,8 @@ import '../App.css';
 import TransactionTable from './TransactionTable';
 import { useEffect,useState } from "react";
 import Form from './Form';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
