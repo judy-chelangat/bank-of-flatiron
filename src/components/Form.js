@@ -1,72 +1,40 @@
 import React from 'react'
 import { useState } from 'react'
 
-function Form({details}) {
+function Form({addTransaction}) {
     //setting the states
     const [category,setCategory]=useState("")
     const [amount,setAmount]=useState("")
     const [description,setDescription]=useState("")
     const [date,setDate]=useState("")
-    const [transactions, setTransactions] = useState([details]);//state for the initial data
-    
+   
     //function to handle the submittion of the form
     function handleSubmit(e){
         e.preventDefault()
-        const formData={ //an object to hold the new inputs
+        const newTransaction ={ //an object to hold the new inputs
+            id: Date.now(), // Generate a unique id using the current timestamp
+            category: category,
             category:category,
             amount:amount,
             description:description,
             date:date
         }
-        const dataArray = [...transactions, formData]; //using the spread operator tocreate a new array
-        setTransactions(dataArray)
+        addTransaction(newTransaction); //Call the addTransaction function passed from the App component to add the new transaction.
         setAmount("")
         setCategory("")
         setDate("")
         setDescription("") //after the form issubmitted I want to reset the inputs by using states
         
     }
-
-    // function to handle the changes when a user types in te input
-    function handleCategoryChange(event) {
-        setCategory(event.target.value);
-      }
-    
-      function handleAmountChange(event) {
-        setAmount(event.target.value);
-      }
-      function handleDescriptionChange(event) {
-        setDescription(event.target.value);
-      }
-    
-      function handleDateChange(event) {
-        setDate(event.target.value);
-      }
-      // using map to iterate over the new data and display it on the dom
-      const listOfSubmissions = transactions.map((data) => {
-        return (
-            <table>
-            <tbody>
-                <tr key={data.id}>
-                     <td>{data.category}</td>
-                     <td>{data.description}</td>
-                     <td>{data.amount}</td>
-                     <td>{data.date}</td>
-                </tr>
-            </tbody>
-          </table>
-        );
-      });
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleCategoryChange} placeholder='category'/>
-        <input onChange={handleAmountChange}  placeholder='Amount'/>
-        <input onChange={handleDescriptionChange} placeholder='description'/>
-        <input onChange={handleDateChange} placeholder='date'/>
+        <input onChange={ e => setCategory(e.target.value)} placeholder='category' value={category}/>
+        <input onChange={ e => setAmount(e.target.value)}  placeholder='Amount' value={amount}/>
+        <input onChange={ e => setDescription(e.target.value)} placeholder='description' value={description}/>
+        <input onChange={ e => setDate(e.target.value)} placeholder='date' value={date}/>
         <button type="submit">Submit</button>
       </form>
-      {listOfSubmissions}
     </div>
   )
 }
