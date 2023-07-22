@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
-function TransactionTable({transactionDetails}){ //passing in the data as prop from parent component and destructuring it
+function TransactionTable({transactionDetails, setTransactionDetails}){ //passing in the data as prop from parent component and destructuring it
 console.log(transactionDetails); // Check if 'transactionsDetails' prop is received correctly 
-
 const [searchTerm,setSearchTerm]=useState("") // state to hold the users search input
 
 // Function to filter transactions based on the search term
@@ -12,9 +11,12 @@ return (
   transaction.description.toLowerCase().includes(searchTerm.toLowerCase()) 
   )//checking to see if the description includes search term
 })
-// function handleClick(){
 
-// }
+//function to handle the delete 
+function handleDelete(id){
+const remainingTransactions=transactionDetails.filter((transaction)=>transaction.id !== id)
+return setTransactionDetails(remainingTransactions);
+}
 return(
   <div className="container">
    <input placeholder="Type to search" 
@@ -30,6 +32,7 @@ return(
         <th>Description</th>
         <th>Amount</th>
         <th>Date</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -41,6 +44,7 @@ return(
                   <td>{transaction.description}</td>
                   <td>{transaction.amount}</td>
                   <td>{transaction.date}</td>
+                  <td onClick={()=> handleDelete(transaction.id)}>X</td>
                 </tr>
               ))
             : transactionDetails.map((transaction) => (
@@ -49,6 +53,7 @@ return(
                   <td>{transaction.description}</td>
                   <td>{transaction.amount}</td>
                   <td>{transaction.date}</td>
+                  <td onClick={()=> handleDelete(transaction.id)}>X</td>
                 </tr>
               ))}
     </tbody>
@@ -73,3 +78,9 @@ export default TransactionTable;
 //Filter transactions by typing into the search bar.
 // Only transactions with a description matching the search term should be shown in the transactions table.
 // i need to fetch the data from local server and then map through each data and display it 
+//bonus 
+// As a user, I should be able to:
+
+//- Sort transactions alphabetically by category or description.
+
+//- Delete a transaction which will remove it from the table
