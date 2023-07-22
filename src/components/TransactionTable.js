@@ -1,9 +1,18 @@
 import React from "react";
+import { useState } from "react";
 
 function TransactionTable({transactionDetails}){ //passing in the data as prop from parent component and destructuring it
 console.log(transactionDetails); // Check if 'transactionsDetails' prop is received correctly 
 
+const [searchTerm,setSearchTerm]=useState("")
+function handleClick(){
+  
+}
 return(
+  <div>
+   <input placeholder="type to search" value={searchTerm}/>
+   <button onClick={handleClick} >Search</button>
+
     <table>
     <thead>
       <tr>
@@ -24,6 +33,7 @@ return(
       ))}
     </tbody>
   </table>
+  </div>
 );
 
 
