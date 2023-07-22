@@ -4,14 +4,21 @@ import { useState } from "react";
 function TransactionTable({transactionDetails}){ //passing in the data as prop from parent component and destructuring it
 console.log(transactionDetails); // Check if 'transactionsDetails' prop is received correctly 
 
-const [searchTerm,setSearchTerm]=useState("")
-function handleClick(){
-  
-}
+const [searchTerm,setSearchTerm]=useState("") // state to hold the users search input
+
+// Function to filter transactions based on the search term
+const filteredTransactions= transactionDetails.filter((transaction)=>{
+return (
+  transaction.description.toLowerCase().includes(searchTerm.toLowerCase()) 
+  )//checking to see if the description includes search term
+})
+// function handleClick(){
+
+// }
 return(
   <div>
-   <input placeholder="type to search" value={searchTerm}/>
-   <button onClick={handleClick} >Search</button>
+   <input placeholder="Type to search" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
+   {/* <button onClick={handleClick} >Search</button> */}
 
     <table>
     <thead>
@@ -23,21 +30,31 @@ return(
       </tr>
     </thead>
     <tbody>
-      {transactionDetails.map((transaction) => (
-        <tr key={transaction.id}>
-             <td>{transaction.category}</td>
-             <td>{transaction.description}</td>
-             <td>{transaction.amount}</td>
-             <td>{transaction.date}</td>
-        </tr>
-      ))}
+      
+    {searchTerm !== ""
+            ? filteredTransactions.map((transaction) => (
+                <tr key={transaction.id}>
+                  <td>{transaction.category}</td>
+                  <td>{transaction.description}</td>
+                  <td>{transaction.amount}</td>
+                  <td>{transaction.date}</td>
+                </tr>
+              ))
+            : transactionDetails.map((transaction) => (
+                <tr key={transaction.id}>
+                  <td>{transaction.category}</td>
+                  <td>{transaction.description}</td>
+                  <td>{transaction.amount}</td>
+                  <td>{transaction.date}</td>
+                </tr>
+              ))}
     </tbody>
   </table>
   </div>
 );
 
-
-   
+ // If search term is not empty, show filtered transactions
+     // If search term is empty, show all transactions
 
 }
 
