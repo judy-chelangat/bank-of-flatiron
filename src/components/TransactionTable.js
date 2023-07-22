@@ -16,11 +16,14 @@ return (
 
 // }
 return(
-  <div>
-   <input placeholder="Type to search" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
+  <div className="container">
+   <input placeholder="Type to search" 
+    className="form-control mb-3"
+   value={searchTerm} 
+   onChange={e => setSearchTerm(e.target.value)}/>
    {/* <button onClick={handleClick} >Search</button> */}
 
-    <table>
+   <table className="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Category</th>
