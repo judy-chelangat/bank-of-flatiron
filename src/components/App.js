@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+
 function App() {
   const [transactions, setTransactions] = useState([]); 
   // //using the useState hook to store the transactions in the component's state.
@@ -24,14 +25,16 @@ useEffect(
 )
 // function to add the nw transaction to the list
 function addTransaction(newTransaction) {
-  setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);
+  setTransactions((prevTransactions) => [ newTransaction, ...prevTransactions]);
 }
 
 return(
-  <div>
-  <Form addTransaction={addTransaction}/> 
-  <TransactionTable transactionDetails={transactions} />
-  
+  <div className="container mt-5">
+    <h1 className="mb-4">Expense Tracker</h1>
+    <div className='d-flex col '>
+      <Form addTransaction={addTransaction}/>
+          <TransactionTable transactionDetails={transactions} />
+      </div>
   </div>
 )
 }
