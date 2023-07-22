@@ -20,15 +20,20 @@ useEffect(
       })
   },[]
 )
+// function to add the nw transaction to the list
+function addTransaction(newTransaction) {
+  setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);
+}
 
 return(
   <div>
-  <Form details={transactions}/> 
+  <Form addTransaction={addTransaction}/> 
   <TransactionTable transactionDetails={transactions} />
   
   </div>
 )
 }
-//passing in the previous array in the form being passed
+//passing in the addtransaction function as a prop
+
 //passing the data as a prop to transaction table
 export default App;
