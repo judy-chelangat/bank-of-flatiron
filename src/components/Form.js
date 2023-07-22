@@ -27,23 +27,13 @@ function Form({addTransaction}) {
         
     }
   return (
-    <div className="container mb-4">
+    <div className="container mb-2">
       <form onSubmit={handleSubmit}>
-      <div className=" mb-3 form-group"> 
-      <input onChange={ e => setCategory(e.target.value)} placeholder='category' value={category}/>
-      </div> 
-      <div className="mb-3 form-group">  
-      <input onChange={ e => setAmount(e.target.value)}  placeholder='Amount' value={amount}/>
-      </div> 
-      <div className="mb-3 form-group"> 
-       <input onChange={ e => setDescription(e.target.value)} placeholder='description' value={description}/>
-      </div>
-      <div className="mb-3 form-group"> 
-       <input onChange={ e => setDate(e.target.value)} placeholder='date' value={date}/>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Add Transaction
-        </button>
+      <input className="me-2 p-1 mb-2" onChange={ e => setCategory(e.target.value)} placeholder='Category' value={category} required/>
+      <input className="me-2 p-1" onChange={ e => setAmount(e.target.value)}  placeholder='Amount' value={amount} required/>
+       <input className="me-2 p-1"onChange={ e => setDescription(e.target.value)} placeholder='Description' value={description} required/>
+       <input className="me-2 p-1" onChange={ e => setDate(e.target.value)} placeholder='Date' value={date} type='date' required/>
+        <button type="submit" className="btn btn-primary">Add Transaction</button>
       </form>
     </div>
   )
