@@ -30,7 +30,7 @@ function addTransaction(newTransaction) {
 
 return(
   <div className="container mt-5">
-    <h1 className="mb-4">Expense Tracker</h1>
+    <h1 className="mb-4">Bank Of Flatiron</h1>
     <div className='d-flex col '>
       <Form addTransaction={addTransaction}/>
           <TransactionTable transactionDetails={transactions} />
